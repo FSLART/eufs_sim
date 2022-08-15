@@ -267,15 +267,15 @@ class EUFSLauncher(Plugin):
         self._widget.findChild(QLabel, "ObjectNoiseToolTip").setVisible(False)
 
         # Read in default noise levels
-        self.set_noise_level(
-            float(self.default_config["eufs_launcher"]["object_noise_default"])
-        )
-        self.set_cone_noise_level(
-            float(self.default_config["eufs_launcher"]["cone_noise_default"])
-        )
-        self.set_color_noise_level(
-            float(self.default_config["eufs_launcher"]["color_noise_default"])
-        )
+        # self.set_noise_level(
+        #     float(self.default_config["eufs_launcher"]["object_noise_default"])
+        # )
+        # self.set_cone_noise_level(
+        #     float(self.default_config["eufs_launcher"]["cone_noise_default"])
+        # )
+        # self.set_color_noise_level(
+        #     float(self.default_config["eufs_launcher"]["color_noise_default"])
+        # )
 
         self.DEBUG_SHUTDOWN = False
 
@@ -293,10 +293,10 @@ class EUFSLauncher(Plugin):
                     else geom.width() * (scaler_multiplier) + 200
                 )
                 widget.setGeometry(
-                    geom.x() * scaler_multiplier,
-                    geom.y() * scaler_multiplier,
-                    new_width,
-                    geom.height() * (scaler_multiplier)
+                    int(geom.x() * scaler_multiplier),
+                    int(geom.y() * scaler_multiplier),
+                    int(new_width),
+                    int(geom.height() * (scaler_multiplier))
                 )
 
         # If use_gui is false, we jump straight into launching the track

@@ -544,7 +544,15 @@ void RaceCarModelPlugin::publishTf() {
   transform_stamped.header.stamp.nanosec = _last_sim_time.nsec;
   transform_stamped.header.frame_id = _reference_frame;
   transform_stamped.child_frame_id = _robot_frame;
-  tf2::convert(transform, transform_stamped.transform);
+
+  transform_stamped.transform.translation.x = transform.getOrigin().getX();
+  transform_stamped.transform.translation.y = transform.getOrigin().getY();
+  transform_stamped.transform.translation.z = transform.getOrigin().getZ();
+
+  transform_stamped.transform.rotation.x = transform.getRotation().getX();
+  transform_stamped.transform.rotation.y = transform.getRotation().getY();
+  transform_stamped.transform.rotation.z = transform.getRotation().getZ();
+  transform_stamped.transform.rotation.w = transform.getRotation().getW();
 
   _tf_br->sendTransform(transform_stamped);
 }
