@@ -234,10 +234,10 @@ class EUFSTrackGenerator(Plugin):
                     else geom.width() * (scaler_multiplier) + 200
                 )
                 widget.setGeometry(
-                    geom.x() * scaler_multiplier,
-                    geom.y() * scaler_multiplier,
-                    new_width,
-                    geom.height() * (scaler_multiplier)
+                    int(geom.x() * scaler_multiplier),
+                    int(geom.y() * scaler_multiplier),
+                    int(new_width),
+                    int(geom.height() * scaler_multiplier)
                 )
 
     def copy_button_pressed(self):
@@ -585,7 +585,7 @@ class EUFSTrackGenerator(Plugin):
     def set_slider_value(self, slidername, sliderval):
         """Sets the value of the specified slider."""
         slider = self._widget.findChild(QSlider, slidername)
-        slider.setValue(sliderval)
+        slider.setValue(int(sliderval))
 
     def set_slider_data(self, slidername, slidermin, slidermax):
         """Sets the minimum and maximum values of sliders."""

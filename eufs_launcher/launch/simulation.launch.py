@@ -5,6 +5,8 @@ from launch.actions import DeclareLaunchArgument, OpaqueFunction, \
     IncludeLaunchDescription
 from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import AnyLaunchDescriptionSource
+from launch_ros.actions import Node
+
 
 from ament_index_python.packages import get_package_share_directory
 
@@ -85,6 +87,13 @@ def generate_launch_description():
                                           "used in the sim"),
 
         OpaqueFunction(function=launch_setup),
+
+        Node(
+            package='sim_bridge',
+            executable='sim_bridge',
+            name='sim_bridge',
+            output='screen'
+        ),
     ])
 
 
